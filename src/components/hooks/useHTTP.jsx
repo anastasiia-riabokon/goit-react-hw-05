@@ -1,7 +1,7 @@
 import {useEffect, useState} from "react";
 import {fetchFilms} from "../../services/api";
 
-export const useHTTP = (str) => {
+export const useHTTP = (endpoint) => {
   const [data, setData] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
@@ -11,7 +11,7 @@ export const useHTTP = (str) => {
       try {
         setIsLoading(true);
         setError(false);
-        const data = await fetchFilms(str);
+        const data = await fetchFilms(endpoint);
         setData(data);
       } catch (error) {
         setError(true);

@@ -9,11 +9,11 @@ import MovieReviews from "./MovieReviews";
 import {useHTTP} from "./hooks/useHTTP";
 
 function App() {
-  const {data: movies} = useHTTP("trending/movie/day");
+  const {data: movies, isLoading, error} = useHTTP("trending/movie/day");
 
-  if (!movies) {
-    return <div>Loading...</div>;
-  }
+  if (!movies || isLoading) return <div>Loading...</div>;
+
+  if (error) return <div>Error: {error}</div>;
 
   const movieResults = movies ? movies.results : [];
 

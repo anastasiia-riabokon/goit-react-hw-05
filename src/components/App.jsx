@@ -1,5 +1,11 @@
+import Navigation from "./Navigation/Navigation";
+
 function App() {
-  return <></>;
+  return (
+    <>
+      <Navigation />
+    </>
+  );
 }
 
 export default App;

@@ -1,10 +1,13 @@
-import {Link, Outlet, useNavigate, useParams} from "react-router-dom";
+import {Link, Outlet, useLocation, useNavigate, useParams} from "react-router-dom";
 import {fetchFilms} from "../services/api";
 import {useHTTP} from "../components/hooks/useHTTP";
+import {useRef} from "react";
 
 const MovieDetailsPage = () => {
   const {movieId} = useParams();
   const {data: movie, isLoading, error} = useHTTP(`movie/${movieId}`);
+  const location = useLocation();
+  const goBack = useRef(location.state || "/movies");
 
   if (!movie) {
     return <div>Loading...</div>;
@@ -20,7 +23,8 @@ const MovieDetailsPage = () => {
 
   return (
     <div>
-      <Link to="/">Go to back</Link>
+      {/* <Link to={location.state ?? "/movies"}>Go to back</Link> */}
+      <Link to={goBack.current}>Go to back</Link>
       <img src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`} alt={movie.title} />
       <h1>title {movie.title}</h1>
       <p>{movie.vote_average}</p>

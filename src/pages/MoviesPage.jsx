@@ -1,4 +1,4 @@
-import {Link, useSearchParams} from "react-router-dom";
+import {Link, useLocation, useSearchParams} from "react-router-dom";
 import {useHTTP} from "../components/hooks/useHTTP";
 import {useForm} from "react-hook-form";
 
@@ -7,6 +7,8 @@ const MoviesPage = () => {
   const [searchParams, setSearchParams] = useSearchParams();
   const query = searchParams.get("query");
   const {data: movie, isLoading, error} = useHTTP(query ? `search/movie?query=${query}` : null);
+  const location = useLocation();
+
   const onSubmit = (data) => {
     setSearchParams(data.query ? {query: data.query} : {});
   };
@@ -24,7 +26,7 @@ const MoviesPage = () => {
       <ul>
         {searchResults.map((item) => (
           <li key={item.id}>
-            <Link to={`/movies/${item.id}`}>
+            <Link to={`/movies/${item.id}`} state={location}>
               <img
                 src={`https://image.tmdb.org/t/p/w500${item.poster_path}`}
                 alt={item.title}

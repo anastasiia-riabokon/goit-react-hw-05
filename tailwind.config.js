@@ -2,7 +2,11 @@
 export default {
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
-    extend: {},
+    extend: {
+      fontFamily: {
+        play: "Playwrite DE Grund, cursive",
+      },
+    },
   },
   plugins: [],
 };

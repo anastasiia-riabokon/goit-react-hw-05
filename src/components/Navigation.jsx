@@ -6,8 +6,8 @@ const Navigation = () => {
     return clsx(isActive && "active");
   };
   return (
-    <header className="shadow-sm shadow-gray-700 p-3">
-      <nav className="flex gap-2">
+    <header className="shadow-md shadow-slate-400 p-4 px-8">
+      <nav className="flex gap-8">
         <NavLink to="/" className={buildLinkClass}>
           Home
         </NavLink>

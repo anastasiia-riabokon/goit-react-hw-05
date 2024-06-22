@@ -5,3 +5,8 @@
 .active {
   color: red;
 }
+
+a {
+  display: inline-block;
+  @apply font-play text-white;
+}

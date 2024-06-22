@@ -11,11 +11,12 @@ const MovieDetailsPage = () => {
   const location = useLocation();
   const goBack = useRef(location.state || "/movies");
 
-  if (isLoading || !movie) return <Loading />;
-  if (error) return <ErrorMessage message={error.message} />;
+  if (!movie) return <Loading />;
 
   return (
     <div>
+      {isLoading && <Loading />}
+      {error && <ErrorMessage />}
       {/* <Link to={location.state ?? "/movies"}>Go to back</Link> */}
       <Link to={goBack.current}>Go to back</Link>
       <img

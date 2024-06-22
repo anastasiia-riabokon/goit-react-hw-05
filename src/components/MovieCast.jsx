@@ -12,7 +12,7 @@ const MovieCast = () => {
   return (
     <div>
       {isLoading && <Loading />}
-      {error && <ErrorMessage message={error.message} />}
+      {error && <ErrorMessage />}
       {creditCast.map((actor) => (
         <li key={actor.cast_id}>
           <p>

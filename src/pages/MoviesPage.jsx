@@ -24,7 +24,7 @@ const MoviesPage = () => {
         <button type="submit">Search</button>
       </form>
       {isLoading && <Loading />}
-      {error && <ErrorMessage message={error.message} />}
+      {error && <ErrorMessage />}
       <ul>
         {searchResults.map((item) => (
           <li key={item.id}>

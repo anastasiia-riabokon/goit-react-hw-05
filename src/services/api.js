@@ -10,11 +10,7 @@ export const fetchFilms = async (endpoint) => {
     const {data} = await axios.get(`/${endpoint}`);
     return data;
   } catch (error) {
-    if (error) {
-      toast.error(`Error: ${error.message}`);
-      throw new Error("Error " + error.response.status + " " + error.response.statusText);
-    } else {
-      throw new Error(error.message);
-    }
+    toast.error(error.message);
+    console.log(error);
   }
 };

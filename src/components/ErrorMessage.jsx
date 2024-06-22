@@ -1,6 +1,10 @@
+import {useEffect} from "react";
 import toast from "react-hot-toast";
 
-const ErrorMessage = ({message}) => {
-  return toast.error({message});
+const ErrorMessage = () => {
+  toast.error("Whoops! Something went wrong...");
+
+  return null;
 };
+
 export default ErrorMessage;

@@ -14,10 +14,7 @@ const MovieCast = lazy(() => import("./MovieCast"));
 const MovieReviews = lazy(() => import("./MovieReviews"));
 
 function App() {
-  const {data: movies, isLoading, error} = useHTTP("trending/movie/day");
-
-  if (isLoading) return <Loading />;
-  if (error) return <ErrorMessage message={error.message} />;
+  const {data: movies} = useHTTP("trending/movie/day");
 
   const movieResults = movies ? movies.results : [];
 

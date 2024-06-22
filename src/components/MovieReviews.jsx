@@ -13,7 +13,7 @@ const MovieReviews = () => {
   return (
     <div>
       {isLoading && <Loading />}
-      {error && <ErrorMessage message={error.message} />}
+      {error && <ErrorMessage />}
       {reviewResults ? (
         <ul>
           {reviewResults.map((review) => (

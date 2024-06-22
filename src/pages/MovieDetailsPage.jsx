@@ -21,7 +21,7 @@ const MovieDetailsPage = () => {
   return (
     <div>
       <Link to="/">Go to back</Link>
-      <img src={`https://image.tmdb.org/t/p/w500${movie.backdrop_path}`} alt={movie.title} />
+      <img src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`} alt={movie.title} />
       <h1>title {movie.title}</h1>
       <p>{movie.vote_average}</p>
       {movie.genres && (

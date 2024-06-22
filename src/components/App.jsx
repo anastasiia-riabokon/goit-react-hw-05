@@ -1,6 +1,6 @@
 import {Route, Routes} from "react-router-dom";
 import {useHTTP} from "./hooks/useHTTP";
-import {Suspense, lazy} from "react";
+import {lazy} from "react";
 import Loading from "./Loading.jsx";
 import ErrorMessage from "./ErrorMessage.jsx";
 
@@ -21,20 +21,18 @@ function App() {
   const movieResults = movies ? movies.results : [];
 
   return (
-    <Suspense fallback={<Loading />}>
-      <Routes>
-        <Route path="/" element={<Layout />}>
-          <Route index element={<HomePage movies={movieResults} />} />
-          <Route path="movies" element={<MoviesPage />} />
-          <Route path="movies/:movieId" element={<MovieDetailsPage />}>
-            <Route path="cast" element={<MovieCast />} />
-            <Route path="review" element={<MovieReviews />} />
-          </Route>
+    <Routes>
+      <Route path="/" element={<Layout />}>
+        <Route index element={<HomePage movies={movieResults} />} />
+        <Route path="movies" element={<MoviesPage />} />
+        <Route path="movies/:movieId" element={<MovieDetailsPage />}>
+          <Route path="cast" element={<MovieCast />} />
+          <Route path="review" element={<MovieReviews />} />
         </Route>
+      </Route>
 
-        <Route path="*" element={<NotFoundPage />} />
-      </Routes>
-    </Suspense>
+      <Route path="*" element={<NotFoundPage />} />
+    </Routes>
   );
 }
 

@@ -1,7 +1,7 @@
 import {Link, Outlet, useLocation, useNavigate, useParams} from "react-router-dom";
 import {fetchFilms} from "../services/api";
 import {useHTTP} from "../components/hooks/useHTTP";
-import {useRef} from "react";
+import {Suspense, useRef} from "react";
 import Loading from "../components/Loading";
 import ErrorMessage from "../components/ErrorMessage";
 
@@ -42,7 +42,9 @@ const MovieDetailsPage = () => {
         <Link to="cast">cast</Link>
         <Link to="review">review</Link>
       </div>
-      <Outlet />
+      <Suspense fallback={<Loading />}>
+        <Outlet />
+      </Suspense>
     </div>
   );
 };

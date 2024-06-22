@@ -17,17 +17,14 @@ const MoviesPage = () => {
 
   const searchResults = movie ? movie.results : [];
 
-  if (isLoading) return <Loading />;
-  if (error) return <ErrorMessage message={error.message} />;
-
   return (
     <div>
       <form onSubmit={handleSubmit(onSubmit)}>
         <input type="search" {...register("query")} />
         <button type="submit">Search</button>
       </form>
-      {isLoading && <div>Loading...</div>}
-      {error && <div>Error: {error}</div>}
+      {isLoading && <Loading />}
+      {error && <ErrorMessage message={error.message} />}
       <ul>
         {searchResults.map((item) => (
           <li key={item.id}>
@@ -36,6 +33,7 @@ const MoviesPage = () => {
                 src={`https://image.tmdb.org/t/p/w500${item.poster_path}`}
                 alt={item.title}
                 width={150}
+                height={225}
               />
               <p>{item.title}</p>
             </Link>

@@ -1,19 +1,19 @@
 import {useParams} from "react-router-dom";
 import {useHTTP} from "./hooks/useHTTP";
 import {format} from "date-fns";
+import Loading from "./Loading";
+import ErrorMessage from "./ErrorMessage";
 
 const MovieReviews = () => {
   const {movieId} = useParams();
   const {data: movie, isLoading, error} = useHTTP(`movie/${movieId}/reviews`);
 
-  if (!movie || isLoading) return <div>Loading...</div>;
-
-  if (error) return <div>Error: {error}</div>;
-
   const reviewResults = movie ? movie.results : [];
-  console.log(reviewResults);
+
   return (
     <div>
+      {isLoading && <Loading />}
+      {error && <ErrorMessage message={error.message} />}
       {reviewResults ? (
         <ul>
           {reviewResults.map((review) => (

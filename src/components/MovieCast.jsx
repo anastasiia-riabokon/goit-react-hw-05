@@ -1,18 +1,18 @@
 import {useParams} from "react-router-dom";
 import {useHTTP} from "./hooks/useHTTP";
+import Loading from "./Loading";
+import ErrorMessage from "./ErrorMessage";
 
 const MovieCast = () => {
   const {movieId} = useParams();
   const {data: movie, isLoading, error} = useHTTP(`movie/${movieId}/credits`);
 
-  if (!movie || isLoading) return <div>Loading...</div>;
-
-  if (error) return <div>Error: {error}</div>;
-
   const creditCast = movie ? movie.cast : [];
 
   return (
     <div>
+      {isLoading && <Loading />}
+      {error && <ErrorMessage message={error.message} />}
       {creditCast.map((actor) => (
         <li key={actor.cast_id}>
           <p>

@@ -1,8 +1,9 @@
 import {Route, Routes} from "react-router-dom";
 import {useHTTP} from "./hooks/useHTTP";
-import {lazy} from "react";
-import Loading from "./Loading.jsx";
-import ErrorMessage from "./ErrorMessage.jsx";
+import {Suspense, lazy} from "react";
+import Loading from "./Loading";
+import ErrorMessage from "./ErrorMessage";
+import {Toaster} from "react-hot-toast";
 
 const Layout = lazy(() => import("./Layout.jsx"));
 const HomePage = lazy(() => import("../pages/HomePage"));
@@ -21,18 +22,22 @@ function App() {
   const movieResults = movies ? movies.results : [];
 
   return (
-    <Routes>
-      <Route path="/" element={<Layout />}>
-        <Route index element={<HomePage movies={movieResults} />} />
-        <Route path="movies" element={<MoviesPage />} />
-        <Route path="movies/:movieId" element={<MovieDetailsPage />}>
-          <Route path="cast" element={<MovieCast />} />
-          <Route path="review" element={<MovieReviews />} />
-        </Route>
-      </Route>
-
-      <Route path="*" element={<NotFoundPage />} />
-    </Routes>
+    <>
+      <Suspense fallback={<Loading />}>
+        <Routes>
+          <Route path="/" element={<Layout />}>
+            <Route index element={<HomePage movies={movieResults} />} />
+            <Route path="movies" element={<MoviesPage />} />
+            <Route path="movies/:movieId" element={<MovieDetailsPage />}>
+              <Route path="cast" element={<MovieCast />} />
+              <Route path="review" element={<MovieReviews />} />
+            </Route>
+          </Route>
+          <Route path="*" element={<NotFoundPage />} />
+        </Routes>
+      </Suspense>
+      <Toaster position="top-center" reverseOrder={false} />
+    </>
   );
 }
 

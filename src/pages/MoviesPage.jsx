@@ -1,6 +1,8 @@
 import {Link, useLocation, useSearchParams} from "react-router-dom";
 import {useHTTP} from "../components/hooks/useHTTP";
 import {useForm} from "react-hook-form";
+import Loading from "../components/Loading";
+import ErrorMessage from "../components/ErrorMessage";
 
 const MoviesPage = () => {
   const {register, handleSubmit} = useForm();
@@ -14,6 +16,9 @@ const MoviesPage = () => {
   };
 
   const searchResults = movie ? movie.results : [];
+
+  if (isLoading) return <Loading />;
+  if (error) return <ErrorMessage message={error.message} />;
 
   return (
     <div>

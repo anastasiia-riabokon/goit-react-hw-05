@@ -2,6 +2,8 @@ import {Link, Outlet, useLocation, useNavigate, useParams} from "react-router-do
 import {fetchFilms} from "../services/api";
 import {useHTTP} from "../components/hooks/useHTTP";
 import {useRef} from "react";
+import Loading from "../components/Loading";
+import ErrorMessage from "../components/ErrorMessage";
 
 const MovieDetailsPage = () => {
   const {movieId} = useParams();
@@ -9,17 +11,8 @@ const MovieDetailsPage = () => {
   const location = useLocation();
   const goBack = useRef(location.state || "/movies");
 
-  if (!movie) {
-    return <div>Loading...</div>;
-  }
-
-  if (isLoading) {
-    return <div>Loading...</div>;
-  }
-
-  if (error) {
-    return <div>Error: {error}</div>;
-  }
+  if (isLoading || !movie) return <Loading />;
+  if (error) return <ErrorMessage message={error.message} />;
 
   return (
     <div>

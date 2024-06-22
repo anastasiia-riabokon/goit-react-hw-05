@@ -1,13 +1,8 @@
 import {Route, Routes} from "react-router-dom";
-// import Layout from "./Layout";
-// import HomePage from "../pages/HomePage";
-// import MoviesPage from "../pages/MoviesPage";
-// import NotFoundPage from "../pages/NotFoundPage";
-// import MovieDetailsPage from "../pages/MovieDetailsPage";
-// import MovieCast from "./MovieCast";
-// import MovieReviews from "./MovieReviews";
 import {useHTTP} from "./hooks/useHTTP";
 import {Suspense, lazy} from "react";
+import Loading from "./Loading.jsx";
+import ErrorMessage from "./ErrorMessage.jsx";
 
 const Layout = lazy(() => import("./Layout.jsx"));
 const HomePage = lazy(() => import("../pages/HomePage"));
@@ -20,14 +15,13 @@ const MovieReviews = lazy(() => import("./MovieReviews"));
 function App() {
   const {data: movies, isLoading, error} = useHTTP("trending/movie/day");
 
-  if (!movies || isLoading) return <div>Loading...</div>;
-
-  if (error) return <div>Error: {error}</div>;
+  if (isLoading) return <Loading />;
+  if (error) return <ErrorMessage message={error.message} />;
 
   const movieResults = movies ? movies.results : [];
 
   return (
-    <Suspense>
+    <Suspense fallback={<Loading />}>
       <Routes>
         <Route path="/" element={<Layout />}>
           <Route index element={<HomePage movies={movieResults} />} />

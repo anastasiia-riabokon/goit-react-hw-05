@@ -7,6 +7,7 @@ export const useHTTP = (endpoint) => {
   const [error, setError] = useState(null);
 
   useEffect(() => {
+    if (!endpoint) return;
     const fetchData = async () => {
       try {
         setIsLoading(true);
@@ -20,7 +21,7 @@ export const useHTTP = (endpoint) => {
       }
     };
     fetchData();
-  }, []);
+  }, [endpoint]);
 
   return {data, isLoading, error};
 };

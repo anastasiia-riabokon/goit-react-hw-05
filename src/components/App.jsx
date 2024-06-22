@@ -3,6 +3,7 @@ import {useHTTP} from "../hooks/useHTTP";
 import {Suspense, lazy} from "react";
 import Loading from "./Loading";
 import {Toaster} from "react-hot-toast";
+import VantaComponent from "./VantaComponent";
 
 const Layout = lazy(() => import("./Layout.jsx"));
 const HomePage = lazy(() => import("../pages/HomePage"));
@@ -20,6 +21,7 @@ function App() {
   return (
     <>
       <Suspense fallback={<Loading />}>
+        <VantaComponent />
         <Routes>
           <Route path="/" element={<Layout />}>
             <Route index element={<HomePage movies={movieResults} />} />

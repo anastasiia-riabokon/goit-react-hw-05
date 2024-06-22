@@ -1,8 +1,7 @@
 import {Route, Routes} from "react-router-dom";
-import {useHTTP} from "./hooks/useHTTP";
+import {useHTTP} from "../hooks/useHTTP";
 import {Suspense, lazy} from "react";
 import Loading from "./Loading";
-import ErrorMessage from "./ErrorMessage";
 import {Toaster} from "react-hot-toast";
 
 const Layout = lazy(() => import("./Layout.jsx"));

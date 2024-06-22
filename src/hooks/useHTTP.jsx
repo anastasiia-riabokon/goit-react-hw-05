@@ -1,5 +1,5 @@
 import {useEffect, useState} from "react";
-import {fetchFilms} from "../../services/api";
+import {fetchFilms} from "../services/api";
 
 export const useHTTP = (endpoint) => {
   const [data, setData] = useState(null);

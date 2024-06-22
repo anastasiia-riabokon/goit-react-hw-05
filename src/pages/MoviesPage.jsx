@@ -1,6 +1,6 @@
 import {Link, useLocation, useSearchParams} from "react-router-dom";
-import {useHTTP} from "../components/hooks/useHTTP";
 import {useForm} from "react-hook-form";
+import {useHTTP} from "../hooks/useHTTP";
 import Loading from "../components/Loading";
 import ErrorMessage from "../components/ErrorMessage";
 

@@ -1,9 +1,8 @@
 import {Link, Outlet, useLocation, useNavigate, useParams} from "react-router-dom";
-import {fetchFilms} from "../services/api";
-import {useHTTP} from "../components/hooks/useHTTP";
 import {Suspense, useRef} from "react";
 import Loading from "../components/Loading";
 import ErrorMessage from "../components/ErrorMessage";
+import {useHTTP} from "../hooks/useHTTP";
 
 const MovieDetailsPage = () => {
   const {movieId} = useParams();

@@ -1,5 +1,5 @@
 import {useParams} from "react-router-dom";
-import {useHTTP} from "./hooks/useHTTP";
+import {useHTTP} from "../hooks/useHTTP";
 import Loading from "./Loading";
 import ErrorMessage from "./ErrorMessage";
 

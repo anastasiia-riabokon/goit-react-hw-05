@@ -8,7 +8,7 @@ function VantaComponent() {
   useEffect(() => {
     const loadVanta = () => {
       const script = document.createElement("script");
-      script.src = "../../public/vanta.net.min.js"; // Вказуємо шлях до вашого файлу Vanta.js
+      script.src = "/vanta.net.min.js"; // Вказуємо шлях до вашого файлу Vanta.js
       script.onload = () => {
         if (!vantaEffect) {
           setVantaEffect(

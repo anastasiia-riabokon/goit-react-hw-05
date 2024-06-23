@@ -42,6 +42,10 @@ img {
   border-radius: 50%;
 }
 
+.block_film img {
+  height: auto;
+}
+
 button,
 a {
   @apply transition-all duration-300;

@@ -36,7 +36,7 @@ const MovieDetailsPage = () => {
             <FaArrowLeft size={25} />
           </Link>
 
-          <div className="flex bg-white rounded-md overflow-hidden mb-4">
+          <div className="block_film flex bg-white rounded-md overflow-hidden mb-4">
             <ImgHTTP src={path} w={200} h={300} alt={movie.title} />
             <div className="p-8">
               <h1 className="mb-2 text-3xl font-bold font-poiret">{movie.title}</h1>

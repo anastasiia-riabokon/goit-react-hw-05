@@ -21,7 +21,7 @@ const MovieDetailsPage = () => {
 
   const buildLinkClass = ({isActive}) => {
     return clsx(
-      "hover:bg-white hover:text-red-600 p-1 px-4 rounded-md",
+      "bg-white text-blue-950 hover:text-red-600 p-1 px-4 rounded-md",
       isActive && "link_details_active"
     );
   };

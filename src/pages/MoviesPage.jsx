@@ -5,9 +5,9 @@ import Loading from "../components/Loading";
 import ErrorMessage from "../components/ErrorMessage";
 import Section from "../components/Section";
 import Container from "../components/Container";
-import ImgHTTP from "../helpers/ImgHTTP";
 import {RxCross1} from "react-icons/rx";
 import {useState} from "react";
+import MovieList from "../components/MovieList";
 
 const MoviesPage = () => {
   const {register, handleSubmit} = useForm();
@@ -63,10 +63,7 @@ const MoviesPage = () => {
               const path = item.poster_path || item.backdrop_path;
               return (
                 <li key={item.id}>
-                  <Link to={`/movies/${item.id}`} state={location} className="item">
-                    <ImgHTTP src={path} alt={item.title} w={200} h={300} />
-                    <p className="title">{item.title}</p>
-                  </Link>
+                  <MovieList id={item.id} path={path} location={location} title={item.title} />
                 </li>
               );
             })}

@@ -1,7 +1,7 @@
-import {Link, useLocation} from "react-router-dom";
+import {useLocation} from "react-router-dom";
 import Section from "../components/Section";
 import Container from "../components/Container";
-import ImgHTTP from "../helpers/ImgHTTP";
+import MovieList from "../components/MovieList";
 
 const HomePage = ({movies}) => {
   const location = useLocation();
@@ -20,10 +20,7 @@ const HomePage = ({movies}) => {
             const path = movie.poster_path || movie.backdrop_path;
             return (
               <li key={movie.id}>
-                <Link to={`/movies/${movie.id}`} className="item" state={location}>
-                  <ImgHTTP src={path} alt={movie.title} w={200} h={300} />
-                  <p className="title">{movie.title}</p>
-                </Link>
+                <MovieList id={movie.id} path={path} location={location} title={movie.title} />
               </li>
             );
           })}

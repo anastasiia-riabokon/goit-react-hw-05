@@ -2,6 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
+body {
+  @apply font-play text-blue-950;
+}
+
 input[type="search"]::-webkit-search-cancel-button {
   -webkit-appearance: none;
 }
@@ -29,7 +33,7 @@ a {
 }
 
 img {
-  @apply object-cover block w-full h-[300px];
+  @apply object-cover block;
 }
 
 button,
@@ -51,4 +55,8 @@ button:hover {
 
 .title {
   @apply text-blue-950 py-4 text-center my-auto;
+}
+
+.link_details_active {
+  @apply bg-white text-red-600  p-1 px-4 rounded-md;
 }

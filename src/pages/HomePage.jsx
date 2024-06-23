@@ -13,23 +13,20 @@ const HomePage = ({movies}) => {
           </h1>
         </div>
 
-        <ul className="flex flex-wrap gap-x-3 gap-y-8 justify-center">
+        <ul className="list">
           {movies.map((movie) => (
-            <li
-              key={movie.id}
-              className="flex flex-col items-center w-[200px] bg-white rounded-md overflow-hidden"
-            >
-              <img
-                src={
-                  `https://image.tmdb.org/t/p/w500${movie.poster_path}` ||
-                  `https://image.tmdb.org/t/p/w500${movie.backdrop_path}`
-                }
-                alt={movie.title}
-                width={200}
-                height={300}
-              />
-              <Link to={`/movies/${movie.id}`} className="text-blue-950 py-4 text-center">
-                {movie.title}
+            <li key={movie.id}>
+              <Link to={`/movies/${movie.id}`} className="item">
+                <img
+                  src={
+                    `https://image.tmdb.org/t/p/w500${movie.poster_path}` ||
+                    `https://image.tmdb.org/t/p/w500${movie.backdrop_path}`
+                  }
+                  alt={movie.title}
+                  width={200}
+                  height={300}
+                />
+                <p className="title">{movie.title}</p>
               </Link>
             </li>
           ))}

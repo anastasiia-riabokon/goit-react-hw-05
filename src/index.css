@@ -12,7 +12,7 @@ a {
 }
 
 img {
-  @apply object-cover block w-full h-full;
+  @apply object-cover block w-full h-[300px];
 }
 
 button,
@@ -21,5 +21,17 @@ a {
 }
 
 button:hover {
-  @apply bg-transparent text-white;
+  @apply bg-[#060622] text-white;
+}
+
+.list {
+  @apply flex flex-wrap gap-x-3 gap-y-8 justify-center;
+}
+
+.item {
+  @apply flex flex-col items-center w-[200px] h-full bg-white rounded-md overflow-hidden;
+}
+
+.title {
+  @apply text-blue-950 py-4 text-center my-auto;
 }

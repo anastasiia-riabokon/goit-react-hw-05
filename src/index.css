@@ -33,7 +33,7 @@ a {
 }
 
 img {
-  @apply object-cover block;
+  @apply object-cover block h-[300px];
 }
 
 button,

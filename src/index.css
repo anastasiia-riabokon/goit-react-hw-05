@@ -14,3 +14,12 @@ a {
 img {
   @apply object-cover block w-full h-full;
 }
+
+button,
+a {
+  @apply transition-all duration-300;
+}
+
+button:hover {
+  @apply bg-transparent text-white;
+}

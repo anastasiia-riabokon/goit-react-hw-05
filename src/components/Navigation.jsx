@@ -3,7 +3,7 @@ import {NavLink} from "react-router-dom";
 
 const Navigation = () => {
   const buildLinkClass = ({isActive}) => {
-    return clsx("transition-colors duration-300 hover:text-red-600", isActive && "active");
+    return clsx("hover:text-red-600", isActive && "active");
   };
   return (
     <header className="shadow-md shadow-slate-400 p-4 px-8">

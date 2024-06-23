@@ -15,7 +15,7 @@ const MovieReviews = () => {
     <div>
       {isLoading && <Loading />}
       {error && <ErrorMessage />}
-      {reviewResults ? (
+      {reviewResults.length > 0 ? (
         <ul className="flex flex-col gap-4">
           {reviewResults.map((review) => (
             <li key={review.id} className="bg-white rounded-md p-4">
@@ -34,7 +34,7 @@ const MovieReviews = () => {
           ))}
         </ul>
       ) : (
-        <div>Not reviews</div>
+        <div className="text-center text-white text-3xl font-poiret font-bold">No Reviews</div>
       )}
     </div>
   );

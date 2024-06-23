@@ -2,6 +2,7 @@ import {useParams} from "react-router-dom";
 import {useHTTP} from "../hooks/useHTTP";
 import Loading from "./Loading";
 import ErrorMessage from "./ErrorMessage";
+import ImgHTTP from "../helpers/ImgHTTP";
 
 const MovieCast = () => {
   const {movieId} = useParams();
@@ -13,26 +14,23 @@ const MovieCast = () => {
     <div>
       {isLoading && <Loading />}
       {error && <ErrorMessage />}
-      {creditCast.map((actor) => (
-        <li key={actor.cast_id}>
-          <p>
-            {actor.name} as {actor.character}
-          </p>
-          {actor.profile_path !== null ? (
-            <img
-              src={`https://image.tmdb.org/t/p/w500${actor.profile_path}`}
-              alt={actor.name}
-              width={100}
-              height={150}
-            />
-          ) : (
-            <div className="w-[100px] h-[150px] bg-gray-700/70 flex items-center justify-center">
-              <p>Not Photo</p>
-            </div>
-          )}
-          <p>gender: {actor.gender === 1 ? "Women" : "Man"}</p>
-        </li>
-      ))}
+      <ul className="list">
+        {creditCast.map((actor) => (
+          <li key={actor.cast_id} className="item">
+            <span className="title flex gap-1 items-center px-2 h-[104px]">
+              <p className="font-poiret">Actor:</p>
+              <p>{actor.name}</p>
+            </span>
+
+            <ImgHTTP src={actor.profile_path} w={200} h={300} alt={actor.name} />
+
+            <span className="title flex gap-1 items-center px-2 h-[104px]">
+              <p className="font-poiret">Character:</p>
+              <p>{actor.character}</p>
+            </span>
+          </li>
+        ))}
+      </ul>
     </div>
   );
 };

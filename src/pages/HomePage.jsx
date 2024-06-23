@@ -1,6 +1,8 @@
 import {Link} from "react-router-dom";
 import Section from "../components/Section";
 import Container from "../components/Container";
+import imgNot from "/image-not-found.jpg";
+import ImgHTTP from "../helpers/ImgHTTP";
 
 const HomePage = ({movies}) => {
   return (
@@ -14,22 +16,17 @@ const HomePage = ({movies}) => {
         </div>
 
         <ul className="list">
-          {movies.map((movie) => (
-            <li key={movie.id}>
-              <Link to={`/movies/${movie.id}`} className="item">
-                <img
-                  src={
-                    `https://image.tmdb.org/t/p/w500${movie.poster_path}` ||
-                    `https://image.tmdb.org/t/p/w500${movie.backdrop_path}`
-                  }
-                  alt={movie.title}
-                  width={200}
-                  height={300}
-                />
-                <p className="title">{movie.title}</p>
-              </Link>
-            </li>
-          ))}
+          {movies.map((movie) => {
+            const path = movie.poster_path || movie.backdrop_path;
+            return (
+              <li key={movie.id}>
+                <Link to={`/movies/${movie.id}`} className="item">
+                  <ImgHTTP src={path} alt={movie.title} w={200} h={300} />
+                  <p className="title">{movie.title}</p>
+                </Link>
+              </li>
+            );
+          })}
         </ul>
       </Container>
     </Section>

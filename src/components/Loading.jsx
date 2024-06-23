@@ -1,6 +1,10 @@
 import {DNA} from "react-loader-spinner";
 
 const Loading = () => {
-  return <DNA />;
+  return (
+    <div className="flex items-center justify-center">
+      <DNA />
+    </div>
+  );
 };
 export default Loading;

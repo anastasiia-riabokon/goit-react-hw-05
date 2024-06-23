@@ -5,6 +5,8 @@ export default {
     extend: {
       fontFamily: {
         play: "Playwrite DE Grund, cursive",
+        italian: "Italianno, cursive",
+        poiret: "Poiret One, sans-serif",
       },
     },
   },

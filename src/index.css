@@ -10,3 +10,7 @@ a {
   display: inline-block;
   @apply font-play text-white;
 }
+
+img {
+  @apply object-cover block w-full h-full;
+}

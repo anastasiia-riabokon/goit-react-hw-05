@@ -40,7 +40,13 @@ function VantaComponent() {
   return (
     <div
       ref={vantaRef}
-      style={{width: "100%", height: "100vh", position: "absolute", zIndex: -1}}
+      style={{
+        width: "100%",
+        height: "100%",
+        position: "fixed",
+        zIndex: -1,
+        backgroundAttachment: "fixed",
+      }}
     />
   );
 }

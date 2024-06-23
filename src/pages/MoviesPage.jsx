@@ -3,6 +3,8 @@ import {useForm} from "react-hook-form";
 import {useHTTP} from "../hooks/useHTTP";
 import Loading from "../components/Loading";
 import ErrorMessage from "../components/ErrorMessage";
+import Section from "../components/Section";
+import Container from "../components/Container";
 
 const MoviesPage = () => {
   const {register, handleSubmit} = useForm();
@@ -18,29 +20,33 @@ const MoviesPage = () => {
   const searchResults = movie ? movie.results : [];
 
   return (
-    <div>
-      <form onSubmit={handleSubmit(onSubmit)}>
-        <input type="search" {...register("query")} />
-        <button type="submit">Search</button>
-      </form>
-      {isLoading && <Loading />}
-      {error && <ErrorMessage />}
-      <ul>
-        {searchResults.map((item) => (
-          <li key={item.id}>
-            <Link to={`/movies/${item.id}`} state={location}>
-              <img
-                src={`https://image.tmdb.org/t/p/w500${item.poster_path}`}
-                alt={item.title}
-                width={150}
-                height={225}
-              />
-              <p>{item.title}</p>
-            </Link>
-          </li>
-        ))}
-      </ul>
-    </div>
+    <Section>
+      <Container>
+        <div>
+          <form onSubmit={handleSubmit(onSubmit)}>
+            <input type="search" {...register("query")} />
+            <button type="submit">Search</button>
+          </form>
+          {isLoading && <Loading />}
+          {error && <ErrorMessage />}
+          <ul>
+            {searchResults.map((item) => (
+              <li key={item.id}>
+                <Link to={`/movies/${item.id}`} state={location}>
+                  <img
+                    src={`https://image.tmdb.org/t/p/w500${item.poster_path}`}
+                    alt={item.title}
+                    width={150}
+                    height={225}
+                  />
+                  <p>{item.title}</p>
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </Container>
+    </Section>
   );
 };
 export default MoviesPage;

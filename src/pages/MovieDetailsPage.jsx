@@ -58,7 +58,7 @@ const MovieDetailsPage = () => {
             </div>
           </div>
           <div className="relative">
-            <div className="flex gap-8 justify-center">
+            <div className="flex gap-8 justify-center mb-8">
               <NavLink to="cast" className={buildLinkClass}>
                 cast
               </NavLink>

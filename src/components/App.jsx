@@ -1,5 +1,5 @@
 import {Route, Routes} from "react-router-dom";
-import {useHTTP} from "../hooks/useHTTP";
+
 import {Suspense, lazy} from "react";
 import Loading from "./Loading";
 import {Toaster} from "react-hot-toast";
@@ -14,17 +14,13 @@ const MovieCast = lazy(() => import("./MovieCast"));
 const MovieReviews = lazy(() => import("./MovieReviews"));
 
 function App() {
-  const {data: movies} = useHTTP("trending/movie/day");
-
-  const movieResults = movies ? movies.results : [];
-
   return (
     <>
       <Suspense fallback={<Loading />}>
         <VantaComponent />
         <Routes>
           <Route path="/" element={<Layout />}>
-            <Route index element={<HomePage movies={movieResults} />} />
+            <Route index element={<HomePage />} />
             <Route path="movies" element={<MoviesPage />} />
             <Route path="movies/:movieId" element={<MovieDetailsPage />}>
               <Route path="cast" element={<MovieCast />} />

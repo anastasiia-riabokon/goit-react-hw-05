@@ -2,8 +2,12 @@ import {useLocation} from "react-router-dom";
 import Section from "../components/Section";
 import Container from "../components/Container";
 import MovieList from "../components/MovieList";
+import {useHTTP} from "../hooks/useHTTP";
 
-const HomePage = ({movies}) => {
+const HomePage = () => {
+  const {data: movies} = useHTTP("trending/movie/day");
+
+  const movieResults = movies ? movies.results : [];
   const location = useLocation();
   return (
     <Section>
@@ -16,7 +20,7 @@ const HomePage = ({movies}) => {
         </div>
 
         <ul className="list">
-          {movies.map((movie) => {
+          {movieResults.map((movie) => {
             const path = movie.poster_path || movie.backdrop_path;
             return (
               <li key={movie.id}>

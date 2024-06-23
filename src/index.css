@@ -36,6 +36,12 @@ img {
   @apply object-cover block h-[300px];
 }
 
+.block_photo_name img {
+  height: auto;
+  aspect-ratio: 1/1;
+  border-radius: 50%;
+}
+
 button,
 a {
   @apply transition-all duration-300;

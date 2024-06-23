@@ -3,6 +3,7 @@ import {useHTTP} from "../hooks/useHTTP";
 import {format} from "date-fns";
 import Loading from "./Loading";
 import ErrorMessage from "./ErrorMessage";
+import ImgHTTP from "../helpers/ImgHTTP";
 
 const MovieReviews = () => {
   const {movieId} = useParams();
@@ -15,24 +16,20 @@ const MovieReviews = () => {
       {isLoading && <Loading />}
       {error && <ErrorMessage />}
       {reviewResults ? (
-        <ul>
+        <ul className="flex flex-col gap-4">
           {reviewResults.map((review) => (
-            <li key={review.id}>
-              <span>
-                {review.author_details.avatar_path !== null ? (
-                  <img
-                    src={`https://image.tmdb.org/t/p/w500${review.author_details.avatar_path}`}
-                    alt={review.author}
-                    className="object-cover block overflow-hidden"
-                  />
-                ) : (
-                  <div></div>
-                )}
-                <p>{review.author}</p>
+            <li key={review.id} className="bg-white rounded-md p-4">
+              <span className="block_photo_name flex gap-2 mb-3">
+                <ImgHTTP src={review.author_details.avatar_path} w={60} h={60} />
+                <span>
+                  <h2 className="">{review.author}</h2>
+                  <p className="font-poiret text-xs">
+                    {format(new Date(review.updated_at), "dd.MM.yyyy HH:mm:ss")}
+                  </p>
+                </span>
               </span>
-              <p>{format(new Date(review.updated_at), "dd.MM.yyyy HH:mm:ss")}</p>
 
-              <p>{review.content}</p>
+              <p className="font-poiret font-semibold">{review.content}</p>
             </li>
           ))}
         </ul>
